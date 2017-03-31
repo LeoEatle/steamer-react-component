@@ -12,7 +12,9 @@ describe('Array', function() {
 }) 
 
 describe('Test', function(){
-    it("I just want to try pending test")
+    it("I just want to try pending test", function(){
+        assert.isOk(true, 'I suppose a failed test here');
+    })
 })
 
 

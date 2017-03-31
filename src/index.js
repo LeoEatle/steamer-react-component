@@ -2,7 +2,7 @@ import spin from './spin';
 
 import React, {Component, PropTypes} from 'react';
 import pureRender from 'pure-render-immutable-decorator';
-
+import chai from 'chai';
 require('./css/index.less');
 // gif路径的设置
 var gifSrc = require('./gif/loading.gif');
@@ -15,6 +15,13 @@ export default class Spinner extends Component {
         this.loadingDOM = [];
         this.getDOM(this.props.opts.spinStyle);
         console.log(this.loadingDOM);
+        var assert = chai.assert;
+        describe('#indexOf()', function(){
+            it("should return -1 when the value is not present", function(){
+                assert.equal(-1, [1,2,3].indexOf(4));
+                //assert.equal(-1, 3+2);
+            })
+        })  
     }
 
     componentDidMount() {
