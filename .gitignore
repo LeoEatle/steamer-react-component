@@ -4,6 +4,7 @@ node_modules.7z
 .DS_Store
 .webpack_cache
 .happypack
+mochawesome-reports
 npm-debug.log
 yarn-error.log
 jest

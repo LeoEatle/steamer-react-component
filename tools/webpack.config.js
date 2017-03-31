@@ -9,7 +9,7 @@ var config = require('../config/project'),
 
 var Clean = require('clean-webpack-plugin'),
     HtmlResWebpackPlugin = require('html-res-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin-steamer");
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var webpackConfig = {
     entry: {
@@ -44,7 +44,7 @@ var webpackConfig = {
                     fallback: "style-loader",
                     use: "css-loader?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]?postcss-loader!less-loader?root=" + path.resolve('src')
                 }),
-                include: [configWebpack.path.example],
+                include: [configWebpack.path.example, configWebpack.path.src],
             },
             {
                 test: /\.html$/,
@@ -55,14 +55,16 @@ var webpackConfig = {
                 loaders: [
                     "url-loader?limit=1000&name=img/[path]/[name].[ext]",
                 ],
-                // include: path.resolve(configWebpack.path.src)
+                include: [configWebpack.path.example, configWebpack.path.src]
             },
         ]
     },
     resolve: {
         modules:['node_modules', configWebpack.path.src],
         extensions: [".js", ".jsx", ".es6", "css", "scss", "less", "png", "jpg", "jpeg", "ico"],
-        alias: {}
+        alias: { 
+            'spinner': path.join(configWebpack.path.src, '/index') // spinner React组件的所在
+        }
     },
     plugins: [
         // remove previous build folder
@@ -77,7 +79,7 @@ var webpackConfig = {
     ],
     watch: true, //  watch mode
     // 是否添加source-map，可去掉注释开启
-    // devtool: "#inline-source-map",
+    devtool: "#inline-source-map",
 };
 
 utils.addPlugins(webpackConfig, HtmlResWebpackPlugin, {

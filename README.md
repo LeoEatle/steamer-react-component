@@ -5,7 +5,7 @@
 
 ## 开发组件规范
 
-* 修改 `package.json` 的相关信息，如果 `name`, `description`, `repository`, `bugs`, `homepage`等
+* 修改 `package.json` 的相关信息，如 `name`, `description`, `repository`, `bugs`, `homepage`等
 * 在 `src` 目录下进行核心组件代码开发
 * 在 `example/src` 目录下，进行 `demo` 的开发，引用src目录下的源码
 * 使用 `npm run start` 命令，访问 `localhost:9000` 能访问 `demo`
