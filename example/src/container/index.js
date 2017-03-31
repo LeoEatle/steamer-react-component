@@ -31,16 +31,16 @@ class Wrapper extends Component {
 		let opts = 
 		[
 			{
-				spinStyle: 'gif',
-				promptText: '正在加载...',
+				style: 'gif',
+				content: '正在加载...',
 			},
 			{
-				spinStyle: 'flower',
-				promptText: 'Loading...',
+				style: 'flower',
+				content: 'Loading...',
 			},
 			{
-				spinStyle: 'gif',
-				promptText: '请耐心等待五秒',
+				style: 'gif',
+				content: '请耐心等待五秒',
 			}
 		]
 
@@ -62,7 +62,7 @@ class Wrapper extends Component {
 			<div className="loadingBlock">
 					<button onClick={this.startLoad}>开始载入</button>
 					{content}
-					<Spinner isLoading = {isLoading} opts = {opts[0]}></Spinner>
+					<Spinner isLoading = {isLoading} opts = {opts[1]}></Spinner>
 			</div>
 		);
 	}

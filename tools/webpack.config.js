@@ -24,7 +24,7 @@ var webpackConfig = {
         rules: [
             { 
                 test: /\.js$/,
-                loader: ['babel-loader','istanbul-instrumenter-loader'],
+                loader: 'babel-loader',
                 query: {
                     "plugins": [
                         "react-hot-loader/babel",
