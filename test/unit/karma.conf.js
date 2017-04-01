@@ -55,30 +55,6 @@ module.exports = function(config) {
         type: 'text-summary'
       }]
     },
-
-    // webpack: {
-    //   rules: [
-    //         { 
-    //             test: /\.js$/,
-    //             loader: 'babel-loader',
-    //             include: ('example/'),
-    //             query: {
-    //                 "plugins": [
-    //                     "react-hot-loader/babel",
-    //                     "transform-decorators-legacy"
-    //                 ],
-    //                 "presets": [
-    //                     ["es2015", {"loose": true, "modules": false}], 
-    //                     "react",
-    //                     "stage-0"
-    //                 ]
-    //             },
-    //             exclude: /node_modules/,
-    //             loader: 'istanbul-instrumenter-loader'
-    //         }],
-        
-    // },
-
     // web server port
     port: 9876,
 

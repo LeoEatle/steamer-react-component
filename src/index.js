@@ -10,6 +10,7 @@ var gifSrc = require('./gif/loading.gif');
 export default class Spinner extends Component {
     constructor(props, context) {
         super(props, context);
+        // 默认的菊花图配置
         let defaultFlowerOpts = {
             lines: 12, // The number of lines to draw
             length: 3, // The length of each line
@@ -32,12 +33,15 @@ export default class Spinner extends Component {
             hwaccel: false, // Whether to use hardware acceleration (might be buggy)
             position: 'relative' // Element positioning
         };
+        // 默认的spinner配置
         let defaultOpts = {
             style: 'gif',
-            content: ''
+            content: '',
+            fullScreen: false
         };
         // 使得默认的菊花图配置和传入的props.flowerOpts合并，然后再和opts的其他属性合并
         this.opts = Object.assign(defaultOpts, this.props.opts, {flowerOpts: Object.assign(defaultFlowerOpts, this.props.opts.flowerOpts)});
+        //console.log(this.opts);
         this.loadingDOM = [];
         //this.getDOM(this.opts.style);
     }
@@ -52,7 +56,7 @@ export default class Spinner extends Component {
         switch (this.opts.style) {
             case "flower":
                 let spinner = new spin(this.opts.flowerOpts).spin();
-                let target = document.getElementById('spin');
+                let target = document.getElementById('loading');
                 console.log(spinner.el);
                 target.appendChild(spinner.el);
                 // 似乎没有办法把这个生成的spinnerDOM让React生成虚拟DOM
@@ -65,10 +69,6 @@ export default class Spinner extends Component {
             default:
                 this.loadingDOM.push(<img key="gif" className="gif" src= {gifSrc} alt="loading" />);
         }
-         // 如果有提示文字，就加上文字
-        if (this.opts.content && this.opts.content !== ''){
-            this.loadingDOM.push(<p key ="prompt" className="promptText">{this.opts.content}</p>);
-        }
     }
 
     render() {
@@ -78,9 +78,16 @@ export default class Spinner extends Component {
                 : 'none'
         }
 
+        if (this.opts.content && this.opts.content !== ''){
+            this.promptTest = (<p key ="prompt" className="promptText">{this.opts.content}</p>);
+        }
+
         return (
-            <div id="spin" style={isShow}>
-                {this.loadingDOM}
+            <div className={this.opts.fullScreen?"spinner-full-screen":"spinner"} style={isShow}>
+                <div id="loading">
+                    {this.loadingDOM}
+                </div>
+                {this.promptTest}
             </div>  
         )
     }
