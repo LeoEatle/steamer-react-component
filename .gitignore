@@ -7,4 +7,6 @@ node_modules.7z
 npm-debug.log
 yarn-error.log
 jest
+dist
 coverage
+dev
